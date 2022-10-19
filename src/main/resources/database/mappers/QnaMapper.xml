@@ -12,8 +12,40 @@
 		LIMIT #{startRow}, #{perPage}
 	</select>
 	
-	<insert id="setAdd" parameterType="QnaVO">
+											<!-- 각 DB에서 AUTO_INCREMENT된 값을 사용하겠다 -->	
+	<insert id="setAdd" parameterType="QnaVO" useGeneratedKeys="true" keyProperty="num">
 		INSERT INTO QNA VALUES(NULL, #{writer}, #{title}, #{contents}, 0, NOW(), 0, 0, 0)
 	</insert>
+
+	<insert id="setFileAdd" parameterType="QnaFileVO"> 
+		INSERT INTO QNAFILES VALUES(NULL, #{num}, #{fileName}, #{oriName})
+	</insert>
 	
+	<select id="getDetail" parameterType="QnaVO" resultMap="getDetailResult">
+		SELECT *
+		FROM QNA Q
+		LEFT JOIN
+		QNAFILES QF
+		USING(NUM)
+		WHERE NUM=#{num}
+	</select>
+	<resultMap type="QnaVO" id="getDetailResult">
+		<id column="NUM" property="num"/>
+		<result column="WRITER" property="writer"/>
+		<result column="TITLE" property="title"/>
+		<result column="CONTENTS" property="contents"/>
+		<result column="HIT" property="hit"/>
+		<result column="REGDATE" property="regDate"/>
+		<result column="REF" property="ref"/>
+		<result column="STEP" property="step"/>
+		<result column="DEPTH" property="depth"/>
+		
+		<collection property="qnaFileVOs" javaType="List" ofType="QnaFileVO">
+			<id column="FILENUM" property="fileNum"/>
+			<result column="NUM" property="num"/>
+			<result column="FILENAME" property="fileName"/>
+			<result column="ORINAME" property="oriName"/>
+		</collection>
+	
+	</resultMap>
 </mapper>

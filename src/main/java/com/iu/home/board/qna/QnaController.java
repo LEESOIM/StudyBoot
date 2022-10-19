@@ -2,8 +2,11 @@ package com.iu.home.board.qna;
 
 import java.util.List;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -44,6 +47,15 @@ public class QnaController {
 		int result = qnaService.setAdd(qnaVO);
 		redirectAttributes.addAttribute("result", result);
 		return "redirect:./list";
+	}
+	
+	@GetMapping("detail")
+	public ModelAndView getDetail(QnaVO qnaVO) throws Exception {
+		ModelAndView mv = new ModelAndView();
+		qnaVO = qnaService.getDetail(qnaVO);
+		mv.addObject("qnaVO", qnaVO);
+		mv.setViewName("board/detail");
+		return mv;
 	}
 	
 }

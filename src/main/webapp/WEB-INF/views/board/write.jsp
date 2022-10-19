@@ -15,6 +15,9 @@
 </head>
 
 <body>
+<div class="container-fluid">
+<div class="row justify-content-center">
+<div class="col-6">
 	<h1>Board Write Page</h1>
 
 	<div>
@@ -40,13 +43,17 @@
 				<input type="file" name="files" class="form-control" id="files">
 			</div>
 
-			<button class="btn btn-primary" href="./add" type="submit">글쓰기 Button</button>
+			<button class="btn btn-primary">글쓰기</button>
 		</form>
+	</div>
+	</div>
+	</div>
 	</div>
 	
 	<script type="text/javascript">
 		$("#contents").summernote({
-			height : 400,
+			tabsize: 4,
+			height : 300,
 			minHeight : null,
 			maxHeight : null,
 			focus : true,

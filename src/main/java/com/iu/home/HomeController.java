@@ -37,7 +37,7 @@ public class HomeController {
 		
 //		List<QnaVO> ar = qnaMapper.getList();
 //		log.info("List : {} size : {}", ar, ar.size()); //중괄호 안에 ar을 집어넣어라
-		//System.out.println("List : "+ ar + " size : " + ar.size()); //객체를 계속 만들기 때문에 속도저하
+		//System.out.println("List : "+ ar + " size : " + ar.size()); //객체를 계속 만들기 때문에 속도저하 -> append시켜주기
 		
 		return "index";
 	}
