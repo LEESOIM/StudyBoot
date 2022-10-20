@@ -47,8 +47,8 @@
 	<script type="text/javascript">
 		let result = '${param.result}';
 		console.log("result",result)
-		if(reulst != "") {
-			if(reulst == 1) {
+		if(result != "") {
+			if(result == 1) {
 				alert('등록성공');
 			}else {
 				alert('등록실패');

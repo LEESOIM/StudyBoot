@@ -17,11 +17,22 @@
 		<java.version>11</java.version>
 	</properties>
 	<dependencies>
+	
+		<!-- AOP -->
+		<!-- https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-starter-aop -->
+		<dependency>
+    		<groupId>org.springframework.boot</groupId>
+    		<artifactId>spring-boot-starter-aop</artifactId>
+    		<!-- 버전삭제 -->
+		</dependency>
+		
+		<!-- SQL Log  -->
 		<dependency>
 			<groupId>org.bgee.log4jdbc-log4j2</groupId>
 			<artifactId>log4jdbc-log4j2-jdbc4.1</artifactId>
 			<version>1.16</version>
 		</dependency> 
+
 		
 		<!-- https://mvnrepository.com/artifact/org.apache.tomcat.embed/tomcat-embed-jasper -->
 		<dependency>
@@ -36,7 +47,9 @@
 		     <!-- 버전 삭제 -->
 		</dependency>
 		
-		<!--
+		
+		
+<!--
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-oauth2-client</artifactId>
@@ -46,6 +59,7 @@
 			<artifactId>spring-boot-starter-security</artifactId>
 		</dependency>
 -->
+
 		<dependency>
 			<groupId>org.mybatis.spring.boot</groupId>
 			<artifactId>mybatis-spring-boot-starter</artifactId>

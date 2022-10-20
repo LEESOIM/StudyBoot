@@ -39,13 +39,12 @@
 		<result column="REF" property="ref"/>
 		<result column="STEP" property="step"/>
 		<result column="DEPTH" property="depth"/>
-		
+				<!-- property="멤버변수" 	javaType="데이터타입" ofType="제네릭" -->
 		<collection property="qnaFileVOs" javaType="List" ofType="QnaFileVO">
 			<id column="FILENUM" property="fileNum"/>
 			<result column="NUM" property="num"/>
 			<result column="FILENAME" property="fileName"/>
 			<result column="ORINAME" property="oriName"/>
 		</collection>
-	
 	</resultMap>
 </mapper>
