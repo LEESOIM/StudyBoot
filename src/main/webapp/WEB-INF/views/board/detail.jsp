@@ -35,8 +35,8 @@
 				<div class="d-flex">
 					<c:forEach items="${qnaVO.qnaFileVOs}" var="VOs">
 						<div>
-							<img src="/file/qna/${VOs.fileName }">
-							<a href="/fileDown/qna?fileNum=${VOs.fileNum }" class="btn btn-primary">Down</a>
+							<img src="/file/${VOs.fileName }">
+							<a href="/fileDown/fileNum=${VOs.fileNum }" class="btn btn-primary">Down</a>
 						</div>
 					</c:forEach>
 				</div>
