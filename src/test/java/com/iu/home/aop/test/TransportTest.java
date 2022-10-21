@@ -13,7 +13,7 @@ public class TransportTest {
 	@Autowired
 	private Card card;
 	
-	@Test
+	//@Test
 	void test() {
 		transport.getTaxi();
 		transport.takeBus();

@@ -71,7 +71,7 @@ public class QnaMapperTest {
 
 	
 	@Rollback(false) //rollback을 하지 않는 메서드가 있을때
-	@Test
+	//@Test
 	void setAdd() throws Exception {
 		QnaVO qnaVO = new QnaVO();
 		qnaVO.setWriter("WITER ");
