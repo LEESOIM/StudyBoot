@@ -6,6 +6,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.iu.home.util.FileManager;
@@ -15,6 +16,7 @@ import lombok.extern.slf4j.Slf4j;
 
 @Service
 @Slf4j //Logger객체 생성 역할
+@Transactional(rollbackFor = Exception.class) //Exception이 발생했을때 rollback
 public class QnaService {
 
 	@Autowired
@@ -40,6 +42,12 @@ public class QnaService {
 		}
 		
 		for(MultipartFile f : qnaVO.getFiles()) {
+			if(f.isEmpty()) {
+				log.info("----------Exception 발생----------");
+				throw new Exception();
+			}
+				
+				
 			if(!f.isEmpty()) {
 				log.info("fileName : {}", f.getOriginalFilename());
 				String fileName = fileManager.saveFile(f, path);
