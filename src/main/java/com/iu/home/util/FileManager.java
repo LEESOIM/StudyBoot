@@ -23,6 +23,7 @@ import lombok.extern.slf4j.Slf4j;
 @Slf4j		//CustomView의 bean name
 public class FileManager extends AbstractView {
 	
+	//파일다운
 	@Override
 	protected void renderMergedOutputModel(Map<String, Object> model, HttpServletRequest request, HttpServletResponse response) throws Exception {
 
@@ -31,7 +32,7 @@ public class FileManager extends AbstractView {
 		log.info(";;;;;;;;;;;;;;;;;;;;;;;;;;;;");
 		log.info("FileVO {} ", qnaFileVO);
 		
-		File file = new File("D:/result/upload/"+path, qnaFileVO.getFileName());
+		File file = new File("/app/upload/"+path, qnaFileVO.getFileName());
 		
 		//한글 처리
 		response.setCharacterEncoding("UTF-8");

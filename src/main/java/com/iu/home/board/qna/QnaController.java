@@ -36,12 +36,7 @@ public class QnaController {
 	public String setAdd() throws Exception {
 		return "board/write";
 	}
-	
-//	@PostMapping("add")
-//	public void setAdd(QnaVO qnaVO) throws Exception {
-//		int result = qnaService.setAdd(qnaVO);
-//	}
-	
+		
 	@PostMapping("add")				//ModelAndView와 달리 값이 파라미터에 담겨서 반환
 	public String setAdd(QnaVO qnaVO, RedirectAttributes redirectAttributes, MultipartFile [] files) throws Exception {
 		int result = qnaService.setAdd(qnaVO);

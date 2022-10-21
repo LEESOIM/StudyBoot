@@ -21,10 +21,8 @@ public class FileManageController {
 		ModelAndView mv = new ModelAndView();
 	
 		//DB에서 정보 조회
-//		qnaFileVO.setFileName("d8dc1a2a-f267-448e-9608-89e88408a76b_읭.png");
-//		qnaFileVO.setOriName("읭.png");
-//		qnaFileVO.setFileName(qnaFileVO.getFileName());
-//		qnaFileVO.setOriName(qnaFileVO.getOriName());
+		qnaFileVO.setFileName(qnaFileVO.getFileName());
+		qnaFileVO.setOriName(qnaFileVO.getOriName());
 		log.info("FileNum {}",qnaFileVO.getFileNum());
 		log.info("FileName {}",qnaFileVO.getFileName());
 		log.info("OriName {}",qnaFileVO.getOriName());
@@ -32,7 +30,7 @@ public class FileManageController {
 		
 		mv.addObject("fileVO", qnaFileVO);
 		mv.addObject("path", path);
-		mv.setViewName("fileManager"); 
+		mv.setViewName("fileManager");  //CustomView의 bean name으로 설정
 		
 		return mv;
 	}

@@ -36,7 +36,7 @@
 					<c:forEach items="${qnaVO.qnaFileVOs}" var="VOs">
 						<div>
 							<img src="/file/${VOs.fileName }">
-							<a href="/fileDown/fileNum=${VOs.fileNum }" class="btn btn-primary">Down</a>
+							<a href="/fileDown?fileNum=${VOs.fileNum }" class="btn btn-primary">Down</a>
 						</div>
 					</c:forEach>
 				</div>
