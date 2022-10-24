@@ -26,6 +26,6 @@ public class WebConfig implements WebMvcConfigurer {
 		
 		//<resources mapping="/resources/**" location="/resources/" />
 		registry.addResourceHandler(urlPath) //요청 URL 주소 -> /file/** 온다면
-				.addResourceLocations(filePath);
+				.addResourceLocations(filePath); //여기서 찾아라 -> file:///app/upload/
 	}
 }
