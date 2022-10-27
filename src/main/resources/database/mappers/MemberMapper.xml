@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+    
+<mapper namespace="com.iu.home.member.MemberMapper">
+
+	<insert id="setJoin" parameterType="MemberVO">
+		INSERT INTO MEMBER(ID, PW, NAME, EMAIL) VALUES(#{id}, #{pw}, #{name}, #{email})
+	</insert>
+	
+	<insert id="setMemberRole" parameterType="RoleVO">
+		INSERT INTO MEMBER_ROLE VALUES((
+			SELECT NUM 
+			FROM ROLE 
+			WHERE ROLENAME='MEMBER'), #{id}
+		)
+	</insert>
+	
+	<select id="getLogin" parameterType="MemberVO" resultMap="getLoginResult">
+		SELECT * 
+		FROM MEMBER M
+		INNER JOIN MEMBER_ROLE MR
+		USING(ID)
+		INNER JOIN ROLE R
+		USING(NUM)
+		WHERE ID=#{id} AND PW=#{pw}
+	</select>
+	<resultMap type="MemberVO" id="getLoginResult">
+		<id column="ID" property="id"/>
+		<result column="PW" property="pw"/>
+		<result column="EMAIL" property="email"/>
+				<!-- 멤버변수 				데이터타입 			제네릭 -->
+		<collection property="roleVOs" javaType="List" ofType="RoleVO">
+			<result column="ROLENAME" property="roleName"/>
+		</collection>
+	</resultMap>
+	
+	<select id="getIdCheck" parameterType="MemberVO" resultType="Long">
+		SELECT COUNT(ID) FROM MEMBER WHERE ID=#{id}
+	</select>
+</mapper>

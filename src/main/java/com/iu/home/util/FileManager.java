@@ -10,6 +10,7 @@ import java.util.UUID;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 import org.springframework.util.FileCopyUtils;
 import org.springframework.web.multipart.MultipartFile;
@@ -19,9 +20,12 @@ import com.iu.home.board.qna.QnaFileVO;
 
 import lombok.extern.slf4j.Slf4j;
 
-@Component
-@Slf4j		//CustomView의 bean name
+@Component //@Component(클래스명의 첫글자를 소문자로 바꾼것이 bean의 이름)
+@Slf4j		
 public class FileManager extends AbstractView {
+	
+	@Value("${app.download.base}")
+	private String base;
 	
 	//파일다운
 	@Override
@@ -32,7 +36,7 @@ public class FileManager extends AbstractView {
 		log.info(";;;;;;;;;;;;;;;;;;;;;;;;;;;;");
 		log.info("FileVO {} ", qnaFileVO);
 		
-		File file = new File("/app/upload/"+path, qnaFileVO.getFileName());
+		File file = new File(base+path, qnaFileVO.getFileName());
 		
 		//한글 처리
 		response.setCharacterEncoding("UTF-8");
