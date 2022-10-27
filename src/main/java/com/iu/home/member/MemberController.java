@@ -10,12 +10,32 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import lombok.extern.slf4j.Slf4j;
+
 @RequestMapping("/member/*")
 @Controller
+@Slf4j
 public class MemberController {
 
 	@Autowired
 	private MemberService memberService;
+	
+	
+	@PostMapping("test")
+	@ResponseBody
+	public MemberVO setTest(MemberVO memberVO, String [] ar) throws Exception {
+		log.info("=====================");
+		log.info("ID : {}", memberVO.getId());
+		log.info("Name : {}", memberVO.getName());
+		for(String s : ar) {
+			log.info("ar : {}", s);
+		}
+		return memberVO;
+	}
+	
+	
+	
+	
 	
 	@GetMapping("join")
 	public void setJoin() throws Exception {

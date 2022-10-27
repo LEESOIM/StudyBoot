@@ -38,6 +38,15 @@
 			<button type="button" id="joinBtn" class="btn btn-primary">회원가입</button>
 		</div>
 
+
+		<!-- Post test -->
+		<div>
+			<button type="button" id="test">POST TEST</button>
+			<button type="button" id="test2">Ajax GET TEST</button>
+			<button type="button" id="test3">Ajax POST TEST</button>
+		</div>
+
+
 		<!-- 약관 test -->
 		<div>
 			<div>
@@ -55,6 +64,15 @@
 				동의3 <input type="checkbox" class="check">
 				<div>약관3</div>
 			</div>
+		</div>
+
+
+		<div>
+			<select id="s1">
+				<option>1</option>
+				<option>2</option>
+			</select>
+			<button type="button" id="s1Add">버튼</button>
 		</div>
 	</form>
 </html>

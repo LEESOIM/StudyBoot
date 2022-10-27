@@ -21,6 +21,7 @@ $(".check").click(function(){
     $("#all").prop("checked", flag);
 })
 
+
 //id, pw, pw2, name, email
 let results = [false, false, false, false, false]
 
@@ -35,6 +36,11 @@ $("#id").blur(function(){
     //     $("#idCheck").html("")
     // }
 
+
+//ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡJqueryAjaxㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ
+
+
+    //$.get("URL?param1=값&param2=값2", function(응답 Data를 받는 변수명){})
     $.get("./idCheck?id="+id, function(data){
         console.log("data : ",data);
         if(data==0){
@@ -47,6 +53,68 @@ $("#id").blur(function(){
         }
     })
 })
+
+
+
+$("#test2").click(function(){
+    let id="abcd";
+    $.ajax({
+        type:"GET",
+        url:"idCheck",
+        data:{
+            id:id
+        },
+        success:function(data){
+            console.log("Data : ",data);
+        },
+        error:function(xhr,status,error){
+            console.log("Xhr : ",xhr);
+            console.log("Status : ",status);
+            console.log("Error : ",error);
+        }
+    });
+})
+
+$("#test3").click(function(){
+    let id="1234";
+    let name="iu";
+    let ar = [1,2,3];
+    $.ajax({
+        type:"POST",
+        url:"test",
+        traditional:true, //배열을 전송할때 사용, true
+        data:{
+            id:id,
+            name:name,
+            ar:ar
+        },
+        success:function(reulst){
+            console.log("reulst : ",reulst);
+        }
+    })
+})
+
+
+let count=3;
+$("#s1Add").click(function(){
+    
+    //추가
+    let add = '<option id="abc'+count+'">'+count+'</option>';
+    $("#s1").append(add);
+    count++;
+
+    //삭제
+    //$("#s1Add").remove(); //선택자 포함, 하위 자식들 까지 모두 삭제
+})
+
+$("#s1").click(function(){
+    $("#s1").empty(); //선택자 제외, 자식들만 삭제
+})
+
+
+
+//ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡJqueryAjaxㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ
+
 
 
 //PW Check
@@ -118,3 +186,23 @@ $("#joinBtn").click(function(){
     //     $("#joinForm").submit();
     // }
 })
+
+
+
+$("#test").click(function(){
+    let id="123";
+    let name="soim";
+
+    //$.post("URL", {param1:값1, param2:값2,...}, callback function)
+    $.post("test",{
+        id:id,
+        name:name
+    }, function(result){
+        //result = JSON.parse(result);
+        //"{키:값}"
+        console.log("Result : ", result);
+        console.log("Name : ", result.name);
+    })
+})
+
+
