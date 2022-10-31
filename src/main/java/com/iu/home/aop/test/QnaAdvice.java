@@ -24,7 +24,7 @@ public class QnaAdvice {
 	      log.info("Kind : {}", joinPoint.getKind());
 	   }
 	   
-	   @Around("execution(* com.iu.home.board.qna.QnaService.set*(..))")
+	   //@Around("execution(* com.iu.home.board.qna.QnaService.set*(..))")
 	   public Object aroundTest(ProceedingJoinPoint joinPoint) throws Throwable {
 	      log.info("----------- before ------------");
 	      

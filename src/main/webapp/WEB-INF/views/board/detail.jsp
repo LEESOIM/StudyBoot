@@ -35,11 +35,14 @@
 				<div class="d-flex">
 					<c:forEach items="${qnaVO.qnaFileVOs}" var="VOs">
 						<div>
-							<img src="/file/qna/${VOs.fileName }">
-							<a href="/fileDown/qna?fileNum=${VOs.fileNum }" class="btn btn-primary">${VOs.oriName }</a>
+							<img src="/file/qna/${VOs.fileName }" width="100%">
+							<a href="/fileDown/qna?fileNum=${VOs.fileNum }">${VOs.oriName }</a>
 						</div>
 					</c:forEach>
 				</div>
+				
+				<a href="./update?num=${qnaVO.num}" class="btn btn-primary">글수정</a>
+				<a href="./list" class="btn btn-primary">글목록</a>
 			</div>
 		</div>
 	</div>

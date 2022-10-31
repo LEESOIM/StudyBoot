@@ -1,34 +1,73 @@
 package com.iu.home.member;
 
+import java.util.List;
+
 import javax.servlet.http.HttpSession;
+import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.validation.BindingResult;
+import org.springframework.validation.FieldError;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.servlet.ModelAndView;
+
+import lombok.extern.slf4j.Slf4j;
+
 
 @RequestMapping("/member/*")
 @Controller
+@Slf4j
 public class MemberController {
 
 	@Autowired
 	private MemberService memberService;
 	
-	@GetMapping("join")
-	public void setJoin() throws Exception {
-
+	@GetMapping("join")		//비어있는 memberVO 객체를 model에 담아서 jsp로 보내라!
+	public void setJoin(@ModelAttribute MemberVO memberVO) throws Exception {
+		//MemberVO memberVO = new MemberVO();
+		//model.addAttribute("memberVO", memberVO); 
 	}
 	
-	@PostMapping("join")
-	public String setJoin(MemberVO memberVO) throws Exception {
-		int result = memberService.setJoin(memberVO);
-		if(result==1) {
-			return "redirect:./login";
+	@PostMapping("join") 	//mv를 호출할때 memberVO를 검증해서 에러가 있거나 실패하면 그 결과를 bindingResult 객체에 그 결과를 담아라!
+	public ModelAndView setJoin(ModelAndView mv, @Valid MemberVO memberVO, BindingResult bindingResult) throws Exception {
+		
+//		if(bindingResult.hasErrors()) {
+//			//검증에 실패하면 회원가입 jsp로 foward
+//			log.info("===검증 에러 발생===");
+//			mv.setViewName("member/join");
+//			return mv;
+//		} 
+
+		
+		//check==false : 검증성공(error 없음)
+		//check==true : 검증실패(error 있음)
+		boolean check = memberService.getMemberError(memberVO, bindingResult);
+		if(check) {
+			log.info("===검증 에러 발생===");
+			mv.setViewName("member/join");
+			//--------------------------------------
+			List<FieldError> errors = bindingResult.getFieldErrors();
+			
+			for(FieldError fileError:errors) {
+				log.info("FiledError => {}", fileError);
+				log.info("Filed => {}", fileError.getField());
+				log.info("Message => {}", fileError.getRejectedValue());
+				log.info("Default => {}", fileError.getDefaultMessage());
+				log.info("Code => {}", fileError.getCode());
+				mv.addObject(fileError.getField(), fileError.getDefaultMessage());
+				log.info("---------------------------");
+			}
+			return mv;
 		}
-		return "member/join";
+		
+//		int result = memberService.setJoin(memberVO);
+		mv.setViewName("redirect:./login");
+		return mv;
 	}
 	
 	

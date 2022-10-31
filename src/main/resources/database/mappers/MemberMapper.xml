@@ -29,6 +29,7 @@
 	<resultMap type="MemberVO" id="getLoginResult">
 		<id column="ID" property="id"/>
 		<result column="PW" property="pw"/>
+		<result column="NAME" property="name"/>
 		<result column="EMAIL" property="email"/>
 				<!-- 멤버변수 				데이터타입 			제네릭 -->
 		<collection property="roleVOs" javaType="List" ofType="RoleVO">

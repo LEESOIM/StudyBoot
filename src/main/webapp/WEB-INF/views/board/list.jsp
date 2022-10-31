@@ -38,6 +38,7 @@
 	
 	<div>
 		<a href="./add" class="btn btn-primary">글쓰기</a>
+		<a href="/" class="btn btn-primary">HOME</a>
 	</div>
 	</div>
 	</div>

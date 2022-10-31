@@ -38,11 +38,11 @@ $("#id").blur(function(){
     $.get("./idCheck?id="+id, function(data){
         console.log("data : ",data);
         if(data==0){
-            $("#idCheck").html("⭕사용가능한 아이디입니다");
+            $("#idCheck").html("✔사용가능한 아이디입니다");
             result[0]=true;
         }else{
             $("#idCheck").html("❌중복된 아이디입니다");
-            $("#id").val("");
+            // $("#id").val("");
             result[0]=false;
         }
     })
@@ -95,13 +95,14 @@ $("#email").blur(function(){
 })
 
 
+//회원가입전송
 $("#joinBtn").click(function(){
 
     if(results.includes(false)){//false가 한개라도 포함되어있으면
         alert("입력이 덜 됐으요");
     }else{
-        //$("#joinForm").submit();
-        alert("전송완료");
+        $("#joinForm").submit();
+        //alert("전송완료");
     }
 
     // let c = true;
