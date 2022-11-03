@@ -20,5 +20,4 @@ public class Pager {
 		}
 		return this.page;
 	}
-	
 }

@@ -26,9 +26,10 @@ public class MemberService {
 		return result;
 	}
 	
-	public MemberVO getLogin(MemberVO memberVO) throws Exception {
-		return memberMapper.getLogin(memberVO);
-	}
+	//이제 로그인 처리는 Security에서 한다
+//	public MemberVO getLogin(MemberVO memberVO) throws Exception {
+//		return memberMapper.getLogin(memberVO);
+//	}
 	
 	public Long getIdCheck(MemberVO memberVO) throws Exception{
 		return memberMapper.getIdCheck(memberVO);

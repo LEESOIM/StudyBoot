@@ -10,10 +10,10 @@
 	<h1>Login</h1>
 	<form action="login" method="post">
 		<h3>ID</h3>
-		<input type="text" name="id" value="ㅇㅅㅇ">
+		<input type="text" name="id" value="admin">
 		
 		<h3>PW</h3>
-		<input type="password" name="pw" value="ㅇㅅㅇ">
+		<input type="password" name="pw" value="admin">
 		
 		<button>로그인</button>
 	</form>

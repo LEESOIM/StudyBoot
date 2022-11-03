@@ -17,14 +17,14 @@
 		)
 	</insert>
 	
-	<select id="getLogin" parameterType="MemberVO" resultMap="getLoginResult">
+	<select id="getLogin" parameterType="String" resultMap="getLoginResult">
 		SELECT * 
 		FROM MEMBER M
 		INNER JOIN MEMBER_ROLE MR
 		USING(ID)
 		INNER JOIN ROLE R
 		USING(NUM)
-		WHERE ID=#{id} AND PW=#{pw}
+		WHERE ID=#{username} <!--  AND PW=#{pw} 시큐리티쓸땐 pw를 쓰지 않는다 -->
 	</select>
 	<resultMap type="MemberVO" id="getLoginResult">
 		<id column="ID" property="id"/>

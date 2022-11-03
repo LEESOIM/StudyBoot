@@ -83,21 +83,24 @@ public class MemberController {
 	public String getLogin() throws Exception {
 		return "member/login";
 	}
+
+//Spring Security를 사용하면 Controller를 안거치고 MemberSecurityService로 보내줌
+//	@PostMapping("login")
+//	public String getLogin(MemberVO memberVO, HttpSession session) throws Exception {
+//		memberVO = memberService.getLogin(memberVO);
+//		session.setAttribute("member", memberVO);
+//		return "member/login";
+//	}
 	
-	@PostMapping("login")
-	public String getLogin(MemberVO memberVO, HttpSession session) throws Exception {
-		memberVO = memberService.getLogin(memberVO);
-		session.setAttribute("member", memberVO);
-		if(memberVO!=null) {
-			return "redirect:/";
-		}
-		return "member/login";
-	}
+//	@GetMapping("logout")
+//	public String getLogout(HttpSession session) throws Exception {
+//		session.invalidate(); //세션만료
+//		return "redirect:/";
+//	}
 	
-	@GetMapping("logout")
-	public String getLogout(HttpSession session) throws Exception {
-		session.invalidate(); //세션만료
-		return "redirect:/";
+	@GetMapping("myPage")
+	public String getMyPage() throws Exception {
+		return "member/myPage";
 	}
 	
 }

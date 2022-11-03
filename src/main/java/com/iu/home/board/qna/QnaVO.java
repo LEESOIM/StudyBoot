@@ -27,6 +27,6 @@ public class QnaVO {
 	private Long step;
 	private Long depth;
 	
-	private MultipartFile [] files;
-	private List<QnaFileVO> qnaFileVOs;
+	private MultipartFile [] files; //업로드할때
+	private List<QnaFileVO> qnaFileVOs; //디비 조회해서 담을때
 }

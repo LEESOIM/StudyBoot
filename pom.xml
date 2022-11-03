@@ -17,32 +17,32 @@
 		<java.version>11</java.version>
 	</properties>
 	<dependencies>
-	
+
 		<!-- 검증 API -->
 		<!-- https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-starter-validation -->
 		<dependency>
-		    <groupId>org.springframework.boot</groupId>
-		    <artifactId>spring-boot-starter-validation</artifactId>
-		    <!-- 버전삭제 -->
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-validation</artifactId>
+			<!-- 버전삭제 -->
 		</dependency>
 
-	
+
 		<!-- AOP -->
 		<!-- https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-starter-aop -->
 		<dependency>
-    		<groupId>org.springframework.boot</groupId>
-    		<artifactId>spring-boot-starter-aop</artifactId>
-    		<!-- 버전삭제 -->
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-aop</artifactId>
+			<!-- 버전삭제 -->
 		</dependency>
-		
+
 		<!-- SQL Log  -->
 		<dependency>
 			<groupId>org.bgee.log4jdbc-log4j2</groupId>
 			<artifactId>log4jdbc-log4j2-jdbc4.1</artifactId>
 			<version>1.16</version>
-		</dependency> 
+		</dependency>
 
-		
+
 		<!-- https://mvnrepository.com/artifact/org.apache.tomcat.embed/tomcat-embed-jasper -->
 		<dependency>
 			<groupId>org.apache.tomcat.embed</groupId>
@@ -51,34 +51,39 @@
 		</dependency>
 		<!-- https://mvnrepository.com/artifact/javax.servlet/jstl -->
 		<dependency>
-		    <groupId>javax.servlet</groupId>
-		    <artifactId>jstl</artifactId>
-		     <!-- 버전 삭제 -->
+			<groupId>javax.servlet</groupId>
+			<artifactId>jstl</artifactId>
+			<!-- 버전 삭제 -->
 		</dependency>
-		
-		
-		
-<!--
+
+		<!-- Sosical login 사용할때 -->
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-oauth2-client</artifactId>
 		</dependency>
+
+		<!-- Spring Security -->
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-security</artifactId>
 		</dependency>
--->
 
+		<!-- JSP Security Tag -->
 		<dependency>
-			<groupId>org.mybatis.spring.boot</groupId>
-			<artifactId>mybatis-spring-boot-starter</artifactId>
-			<version>2.2.2</version>
+			<groupId>org.springframework.security</groupId>
+			<artifactId>spring-security-taglibs</artifactId>
 		</dependency>
 
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-web</artifactId>
 		</dependency>
+		<dependency>
+			<groupId>org.mybatis.spring.boot</groupId>
+			<artifactId>mybatis-spring-boot-starter</artifactId>
+			<version>2.2.2</version>
+		</dependency>
+
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-devtools</artifactId>

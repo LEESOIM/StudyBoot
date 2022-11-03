@@ -1,6 +1,7 @@
 let count=0;
 let flag=true;
 
+//파일 등록
 $("#fileAdd").click(function(){
     if(flag){
         let size = $("#fileBox").attr("data-file-size");
@@ -23,6 +24,7 @@ $("#fileAdd").click(function(){
     }
 })
 
+//파일 삭제
 //이벤트 위임
 //$("부모선택자").on("이벤트명", "자식선택자", callback function)
 $("#fileBox").on("click", ".del", function(){
