@@ -39,26 +39,27 @@ public class MemberVO implements UserDetails {
 	private Date birth;
 	
 	
-	@Override		
-	//? : GrantedAuthority 타입이거나 GrantedAuthority를 상속받은 것들
+	@Override		//? : GrantedAuthority 타입이거나 GrantedAuthority를 상속받은 것들
 	public Collection<? extends GrantedAuthority> getAuthorities() {
 		List<GrantedAuthority> authorities = new ArrayList<>();
 		for(RoleVO roleVO : roleVOs) {
 			authorities.add(new SimpleGrantedAuthority(roleVO.getRoleName()));
-			
 		}
 		return authorities;
 	}
+	
 	@Override
 	public String getPassword() {
 		//PW 반환
 		return this.getPw();
 	}
+	
 	@Override
 	public String getUsername() {
 		//ID 반환
 		return this.id;
 	}
+	
 	@Override
 	public boolean isAccountNonExpired() {
 		// 계정의 만료 여부
@@ -66,6 +67,7 @@ public class MemberVO implements UserDetails {
 		// false : 만료 됨, 로그인 불가
 		return true;
 	}
+	
 	@Override
 	public boolean isAccountNonLocked() {
 		// 계정의 잠김 여부
@@ -73,6 +75,7 @@ public class MemberVO implements UserDetails {
 		// false : 잠김, 로그인 불가
 		return true;
 	}
+	
 	@Override
 	public boolean isCredentialsNonExpired() {
 		// 비밀번호 만료 여부
@@ -81,11 +84,11 @@ public class MemberVO implements UserDetails {
 		return true;
 	}
 	
-	// isEnabled
-	// 계정 사용가능 여부
-	// true : 계정 활성화(사용가능)
-	// false : 계정 비활성화(사용불가능) 
 	public boolean isEnabled() {
+		// isEnabled
+		// 계정 사용가능 여부
+		// true : 계정 활성화(사용가능)
+		// false : 계정 비활성화(사용불가능) 
 		return true;
 	}
 }

@@ -53,7 +53,6 @@
 					<form:errors path="birth"></form:errors>
 					<div id="emailCheck"></div>
 					
-
 					<div>
 						<button type="submit" id="joinBtn" class="btn btn-primary">회원가입</button>
 					</div>
