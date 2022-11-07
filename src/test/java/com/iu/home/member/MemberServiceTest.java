@@ -21,7 +21,7 @@ public class MemberServiceTest {
 		MemberVO memberVO = new MemberVO();
 		memberVO.setId("admin");
 		memberVO.setPw(passwordEncoder.encode("admin"));
-		memberVO.setName("어드민");
+		memberVO.setName("관리자");
 		memberVO.setEmail("admin@naver.com");
 		int result = memberMapper.setJoin(memberVO);
 		assertEquals(1, result);

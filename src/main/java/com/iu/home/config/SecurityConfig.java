@@ -8,12 +8,11 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
-import org.springframework.security.web.authentication.logout.LogoutHandler;
-import org.springframework.security.web.authentication.logout.LogoutSuccessHandler;
 
 import com.iu.home.member.security.LoginFail;
 import com.iu.home.member.security.LoginSuccess;
 import com.iu.home.member.security.LogoutCustom;
+import com.iu.home.member.security.LogoutSuccessCustom;
 
 //@Configuration
 @EnableWebSecurity //시큐리티를 실행하겠다
@@ -29,7 +28,7 @@ public class SecurityConfig {
 	private LogoutCustom logoutCustom;
 	
 	@Autowired
-	private LogoutSuccessHandler logoutSuccessHandler;
+	private LogoutSuccessCustom logoutSuccessCustom;
 	
 	@Bean
 	//public을 선언하면 default로 바꾸라는 메세지 출력
@@ -72,7 +71,8 @@ public class SecurityConfig {
 					.logout()
 						.logoutUrl("/member/logout")
 						//.logoutSuccessUrl("/")
-						.logoutSuccessHandler(null)
+						.logoutSuccessHandler(logoutSuccessCustom)
+						.addLogoutHandler(logoutCustom)
 						.invalidateHttpSession(true) //세션만료
 						.deleteCookies("JSESSIONID") //쿠키지웟
 						.permitAll();

@@ -11,15 +11,13 @@ import org.springframework.security.web.authentication.logout.LogoutSuccessHandl
 import org.springframework.stereotype.Component;
 
 import lombok.extern.slf4j.Slf4j;
-
 @Component
 @Slf4j
-public class LogoutSuccessCustom implements LogoutSuccessHandler {
+public class LogoutSuccessCustom implements LogoutSuccessHandler{
 
 	@Override
-	public void onLogoutSuccess(HttpServletRequest request, HttpServletResponse response, Authentication authentication)
-			throws IOException, ServletException {
-		log.info("==========로그아웃 성공시에만 실행==========");
+	public void onLogoutSuccess(HttpServletRequest request, HttpServletResponse response, Authentication authentication) throws IOException, ServletException {
+		log.info("=== logout 성공시에만 실행 ===");
 		response.sendRedirect("/");
 	}
 }

@@ -26,6 +26,10 @@
 			<input type="checkbox" name="rememberId">
 			<label>아이디 기억하기</label>
 		</div>
+		<div>
+			<input type="checkbox" name="rememberMe">
+			<label>자동로그인</label>
+		</div>
 		<button>로그인</button>
 	</form>
 	

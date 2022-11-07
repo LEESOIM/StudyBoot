@@ -39,6 +39,8 @@ public class LoginSuccess implements AuthenticationSuccessHandler {
 					cookie.setMaxAge(0);
 					cookie.setPath("/"); //쿠키삭제시 쿠키를 만들때의 path와 동일해야함
 					response.addCookie(cookie);
+					log.info("==== Cookie 삭제 ====");
+					break;
 				}
 			}
 		}

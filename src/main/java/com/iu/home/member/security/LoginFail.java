@@ -56,8 +56,8 @@ public class LoginFail implements AuthenticationFailureHandler {
 //		request.setAttribute("msg", result);
 //		request.getRequestDispatcher("/WEB-INF/views/member/login.jsp").forward(request, response);
 		
-		
 		// 3) POST방식으로 Controller의 메서드를 요청함
-		request.getRequestDispatcher("/member/login?message="+result).forward(request, response);
+		request.setAttribute("msg", result);
+		request.getRequestDispatcher("/member/login").forward(request, response);
 	}
 }
