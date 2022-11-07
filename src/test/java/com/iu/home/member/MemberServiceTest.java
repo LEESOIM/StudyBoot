@@ -19,10 +19,10 @@ public class MemberServiceTest {
 	@Test
 	void test() throws Exception {
 		MemberVO memberVO = new MemberVO();
-		memberVO.setId("admin");
-		memberVO.setPw(passwordEncoder.encode("admin"));
-		memberVO.setName("관리자");
-		memberVO.setEmail("admin@naver.com");
+		memberVO.setId("manager");
+		memberVO.setPw(passwordEncoder.encode("manager"));
+		memberVO.setName("매니저");
+		memberVO.setEmail("manager@naver.com");
 		int result = memberMapper.setJoin(memberVO);
 		assertEquals(1, result);
 	}

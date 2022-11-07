@@ -29,6 +29,14 @@ public class QnaController {
 	@Autowired
 	private QnaService qnaService;
 	
+	@GetMapping("hack")
+	@ResponseBody
+	public int hack(QnaVO qnaVO) throws Exception {
+		qnaService.setAdd(qnaVO);
+		return 1;
+	}
+	
+	
 	@GetMapping("list")
 	public ModelAndView getList(Pager pager) throws Exception {
 		ModelAndView mv = new ModelAndView();
@@ -49,7 +57,7 @@ public class QnaController {
 			mv.setViewName("board/write");
 			return mv;
 		}
-//		int result = qnaService.setAdd(qnaVO);
+		int result = qnaService.setAdd(qnaVO);
 		mv.setViewName("redirect:./list");
 //		redirectAttributes.addAttribute("result", result);
 		return mv;

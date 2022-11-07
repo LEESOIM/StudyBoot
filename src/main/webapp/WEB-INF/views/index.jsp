@@ -32,13 +32,18 @@
 				<h3><spring:message code="welcome2" arguments="${member.id}@${member.name}" argumentSeparator="@"></spring:message></h3>
 				
 				<a href="./member/myPage">마이페이지</a>
-				<a href="./member/logout">로그아웃</a>
+				<a href="#" id="logout">로그아웃</a>
+				<form action="./member/logout" method="post" id="logoutForm">
+					<sec:csrfInput/>
+					<button>로그아웃</button>
+				</form>
 			</sec:authorize>
 			
 			<!-- 로그인 전 -->
 			<sec:authorize access="!isAuthenticated()"> <!-- 인증이 안 되었으면 -->
 				<a href="./member/join">회원가입</a>
 				<a href="./member/login">로그인</a>
+				<a href="/oauth2/authorization/kakao" class="btn btn-warning">KaKao</a>
 			</sec:authorize>
 			 
 			<sec:authorize url="/admin"> <!-- config에 등록된 url의 권한 -->
@@ -60,6 +65,11 @@
 		<h1>${h }</h1>
 		<h1>${h }</h1>
 		<h1>${h }</h1>
+		<script type="text/javascript">
+			$('#logout').click(function(){
+				$("#logoutForm").submit();
+			})
+		</script>
 	</div>
 </body>
 </html>

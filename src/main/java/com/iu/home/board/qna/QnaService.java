@@ -41,19 +41,21 @@ public class QnaService {
 			boolean check = file.mkdirs();
 		}
 		
-		for(MultipartFile f : qnaVO.getFiles()) {
-				
-			if(!f.isEmpty()) {
-				log.info("fileName : {}", f.getOriginalFilename());
-				String fileName = fileManager.saveFile(f, path);
-				QnaFileVO qnaFileVO = new QnaFileVO();
-				qnaFileVO.setFileName(fileName);
-				qnaFileVO.setOriName(f.getOriginalFilename());
-				qnaFileVO.setNum(qnaVO.getNum());
-				
-				qnaMapper.setFileAdd(qnaFileVO);
+		if(qnaVO.getFiles()!=null) {
+			for(MultipartFile f : qnaVO.getFiles()) {
+				if(!f.isEmpty()) {
+					log.info("fileName : {}", f.getOriginalFilename());
+					String fileName = fileManager.saveFile(f, path);
+					QnaFileVO qnaFileVO = new QnaFileVO();
+					qnaFileVO.setFileName(fileName);
+					qnaFileVO.setOriName(f.getOriginalFilename());
+					qnaFileVO.setNum(qnaVO.getNum());
+					
+					qnaMapper.setFileAdd(qnaFileVO);
+				}
 			}
 		}
+		
 		return result;
 	}
 	

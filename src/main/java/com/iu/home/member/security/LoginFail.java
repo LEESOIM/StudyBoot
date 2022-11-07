@@ -45,10 +45,10 @@ public class LoginFail implements AuthenticationFailureHandler {
 		}else {
 			result = "로그인 실패";
 		}
-		result = URLEncoder.encode(result, "UTF-8");
 
 		
 		// 1) Redirect
+//		result = URLEncoder.encode(result, "UTF-8");
 //		response.sendRedirect("/member/login?error=true&message="+result);
 		
 		

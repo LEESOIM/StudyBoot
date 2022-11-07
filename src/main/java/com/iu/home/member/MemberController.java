@@ -67,7 +67,7 @@ public class MemberController {
 			return mv;
 		}
 		
-//		int result = memberService.setJoin(memberVO);
+		int result = memberService.setJoin(memberVO);
 		mv.setViewName("redirect:./login");
 		return mv;
 	}
@@ -82,7 +82,7 @@ public class MemberController {
 	
 	
 	@GetMapping("login") //파라미터 값이 넘어오면 담고 안넘어오면 안담아도돼
-	public void getLogin(@RequestParam(defaultValue = "false", required = false)boolean error, String message, Model model) throws Exception {
+	public void getLogin(@RequestParam(defaultValue = "false", required = false) boolean error, String message, Model model)throws Exception{
 		if(error) {
 			model.addAttribute("msg", "ID 또는 PW를 확인하세요");
 		}
@@ -90,8 +90,8 @@ public class MemberController {
 	}
 
 	@PostMapping("login")
-	public String getLogin() throws Exception {
-		log.info("==========Login Post==========");
+	public String getLogin() throws Exception{
+		log.info(" ========= Login Post ===========");
 		return "member/login";
 	}
 	
@@ -108,6 +108,7 @@ public class MemberController {
 //		session.invalidate(); //세션만료
 //		return "redirect:/";
 //	}
+	
 	
 	@GetMapping("myPage")
 	public String getMyPage() throws Exception {

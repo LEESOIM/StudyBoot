@@ -17,6 +17,7 @@
 	</div>
 	
 	<form action="login" method="post">
+	<input type="hidden" name="${_csrf.parameterName }" value="${_csrf.token }">
 		<h3>ID</h3>
 		<input type="text" name="id" value="${cookie.userId.value}">
 		<h3>PW</h3>
