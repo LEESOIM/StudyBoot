@@ -4,6 +4,7 @@ import java.sql.Date;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
+import java.util.Map;
 
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
@@ -14,11 +15,12 @@ import org.hibernate.validator.constraints.Range;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.oauth2.core.user.OAuth2User;
 
 import lombok.Data;
 
 @Data
-public class MemberVO implements UserDetails {
+public class MemberVO implements UserDetails, OAuth2User {
 	@NotBlank(message = "ID 필수~!") //Null 허용하지 않음
 	private String id;
 	@NotBlank
@@ -30,14 +32,29 @@ public class MemberVO implements UserDetails {
 	@NotBlank
 	@Email //이메일형식
 	private String email;
-	private boolean enabled;
-	
-	private List<RoleVO> roleVOs;
 	@Range(max = 150, min = 0)
 	private int age;
 	@Past
 	private Date birth;
 	
+	private boolean enabled;
+	private List<RoleVO> roleVOs;
+	
+	
+	
+	//====================Social Login====================
+	//KaKao, Naver, Google
+	private String social;
+	
+	//OAuth2User, Token 등 정보 저장
+	private Map<String, Object> attributes;
+	
+	
+
+	@Override
+	public Map<String, Object> getAttributes() {
+		return this.attributes;
+	}
 	
 	@Override		//? : GrantedAuthority 타입이거나 GrantedAuthority를 상속받은 것들
 	public Collection<? extends GrantedAuthority> getAuthorities() {
@@ -91,4 +108,5 @@ public class MemberVO implements UserDetails {
 		// false : 계정 비활성화(사용불가능) 
 		return true;
 	}
+	
 }

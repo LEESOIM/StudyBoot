@@ -80,8 +80,8 @@ public class SecurityConfig {
 					.logout()
 						.logoutUrl("/member/logout")
 						//.logoutSuccessUrl("/")
-						.logoutSuccessHandler(logoutSuccessCustom)
 						.addLogoutHandler(logoutCustom)
+						.logoutSuccessHandler(logoutSuccessCustom)
 						.invalidateHttpSession(true) //세션만료
 						.deleteCookies("JSESSIONID") //쿠키지웟
 						.permitAll()

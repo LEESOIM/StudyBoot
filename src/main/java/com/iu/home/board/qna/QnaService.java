@@ -21,12 +21,25 @@ public class QnaService {
 
 	@Autowired
 	private QnaMapper qnaMapper;
-	
 	@Autowired
 	private FileManager fileManager;
 	
+	
 	@Value("${app.upload.qna}") //프로퍼티스 값을 가져오는 어노테이션
 	private String path;
+	
+	public String setSummerFile(MultipartFile file) throws Exception {
+		String fileName = fileManager.saveFile(file, path);
+		fileName = "/file/qna/"+fileName;
+		return fileName;
+	}
+	
+	public boolean SetSummerFileDelete(String fileName) throws Exception {
+		fileName = fileName.substring(fileName.lastIndexOf("/")+1);
+		log.info("fileName => {}",fileName);
+		File file = new File(path, fileName);
+		return file.delete();
+	}
 	
 	public List<QnaVO> getList(Pager pager) throws Exception{
 		pager.makeRow();

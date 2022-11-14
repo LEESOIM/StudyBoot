@@ -35,15 +35,18 @@
 				<a href="#" id="logout">로그아웃</a>
 				<form action="./member/logout" method="post" id="logoutForm">
 					<sec:csrfInput/>
-					<button>로그아웃</button>
 				</form>
+				
+				<button type="button" id="kakao">카카오로그아웃</button>
+				
+				<a href="/member/delete">회원탈퇴</a>
 			</sec:authorize>
 			
 			<!-- 로그인 전 -->
 			<sec:authorize access="!isAuthenticated()"> <!-- 인증이 안 되었으면 -->
 				<a href="./member/join">회원가입</a>
-				<a href="./member/login">로그인</a>
-				<a href="/oauth2/authorization/kakao" class="btn btn-warning">KaKao</a>
+				<a href="./member/login">일반로그인</a>
+				<a href="/oauth2/authorization/kakao"><img src="/images/kakao.png" width="2%"></a>
 			</sec:authorize>
 			 
 			<sec:authorize url="/admin"> <!-- config에 등록된 url의 권한 -->
@@ -68,6 +71,12 @@
 		<script type="text/javascript">
 			$('#logout').click(function(){
 				$("#logoutForm").submit();
+			})
+			
+			$('#kakao').click(function(){
+				$.get("https://developers.kakao.com/logout", function(){
+					location.reload(); //현재페이지 새로고침
+				})
 			})
 		</script>
 	</div>

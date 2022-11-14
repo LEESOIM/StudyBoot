@@ -37,7 +37,7 @@ public class LoginFail implements AuthenticationFailureHandler {
 			
 		
 		String result=null;
-		//참조변수명 instanceof 클래스명
+		//참조변수명 instanceof 클래스명() = 이 클래스와 같은지
 		if(exception instanceof BadCredentialsException) {
 			result = "비번 틀림";
 		}else if(exception instanceof InternalAuthenticationServiceException) {

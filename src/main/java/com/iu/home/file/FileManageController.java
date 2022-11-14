@@ -18,8 +18,8 @@ public class FileManageController {
 	@Autowired
 	QnaService qnaService;
 
-	@GetMapping("/fileDown/{path}") //RestFul, RestAPI
-	public ModelAndView fileDown(@PathVariable(name="path") String path, QnaFileVO qnaFileVO) throws Exception {
+	@GetMapping("/fileDown/{p}") //RestFul, RestAPI //'p'로 시작하는 url파라미터를 메서드 파라미터 path로 받아라
+	public ModelAndView fileDown(@PathVariable(name="p") String path, QnaFileVO qnaFileVO) throws Exception {
 		
 		log.info("Path {} ", path);
 		ModelAndView mv = new ModelAndView();

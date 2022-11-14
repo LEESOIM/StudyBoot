@@ -6,6 +6,7 @@ import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PostAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -24,10 +25,27 @@ import lombok.extern.slf4j.Slf4j;
 
 @RequestMapping("/qna/*")
 @Controller
+@Slf4j
 public class QnaController {
 
 	@Autowired
 	private QnaService qnaService;
+	
+	@PostMapping("summerFile")
+	@ResponseBody
+	public String setSummerFile(MultipartFile file) throws Exception {
+		log.info("File => {}", file);
+		String result = qnaService.setSummerFile(file);
+		return result;
+	}
+	
+	@PostMapping("summerFileDelete")
+	@ResponseBody
+	public boolean SetSummerFileDelete(String fileName) throws Exception {
+		log.info("fileName : {}", fileName);
+		return qnaService.SetSummerFileDelete(fileName);
+	}
+	
 	
 	@GetMapping("hack")
 	@ResponseBody

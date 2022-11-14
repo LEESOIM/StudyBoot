@@ -26,7 +26,9 @@
 
 				<div>
 					<form:form modelAttribute="qnaVO" method="post">
-					<sec:csrfInput/>
+
+						<input type="hidden">
+						<sec:csrfInput/>
 					
 						<div class="mb-3">
 							<label for="title" class="form-label">Title</label>
@@ -64,7 +66,62 @@
 			minHeight : null,
 			maxHeight : null,
 			focus : true,
+			callbacks: {
+				onImageUpload: function(file) {
+					console.log("Image Upload")
+					
+					//ajax file server로 upload 후 경로를 받아서 사용
+					uploadFile(file);
+				},
+				
+				onMediaDelete:function(file){
+					console.log("Delete Media")
+					console.log("DeleteFile => ", file)
+					deleteFile(file);
+				}
+			}
 		});
+		
+		//ajax upload 함수
+		function uploadFile(file) {
+			console.log("file ",file);
+			console.log("fileName => ", file[0].name);
+			
+			//<form>태그를 준비
+			const formData = new FormData();
+			
+			//<input type="file">
+			formData.append('file', file[0]);
+			
+			$.ajax({
+				type:"POST",
+				url:"summerFile",
+				data:formData,
+				cache:false,
+				contentType:false,
+				processData:false,
+				enctype:'multipart/form-data',
+				success:function(img){ //성공했을때 실행되는 함수
+					console.log("Image => ", img);
+				
+					//img = '<img src="'+img+'">';
+					//$("#contents").summernote('pasteHTML', img);
+					$("#contents").summernote('insertImage', img, 'file[0].name');
+				},
+				error:function(){ //에러가 발생했을때 실행되는 함수
+					console.log("이미지 업로드 실패");
+				}
+			})
+		}
+		
+		
+		function deleteFile(file) {
+			console.log("src => ", file.attr("src"));
+			$.post("./summerFileDelete", {fileName:file.attr("src")}, function(result){
+				console.log("result =>", result);
+			})
+		}
+		
 	</script>
 </body>
 </html>

@@ -6,6 +6,8 @@ import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextImpl;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -115,4 +117,28 @@ public class MemberController {
 		return "member/myPage";
 	}
 	
+	
+	@GetMapping("logoutResult")
+	public String socialLogout() throws Exception {
+		return "redirect:../";
+	}
+	
+	@GetMapping("delete")
+	public ModelAndView setDelete(HttpSession session, String pw) throws Exception {
+		//1. Social/일반 회원 구분
+		ModelAndView mv = new ModelAndView();
+		SecurityContextImpl context = (SecurityContextImpl)session.getAttribute("SPRING_SECURITY_CONTEXT");
+		Authentication authentication = context.getAuthentication();
+		log.info("Auth => {}", authentication);
+		MemberVO memberVO = (MemberVO) authentication.getPrincipal();
+		log.info("Member => {}", memberVO);
+		
+		int result = memberService.setDelete(memberVO);
+		if(result>0) {
+			mv.setViewName("redirect:./logout");
+		}else{
+			//탈퇴실패
+		}
+		return mv;
+	}
 }

@@ -5,6 +5,6 @@ import lombok.Data;
 @Data
 public class RoleVO {
 
-	private Long num;
+	private Integer num;
 	private String roleName;
 }
