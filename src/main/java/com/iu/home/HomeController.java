@@ -50,11 +50,17 @@ public class HomeController {
 	
 	@GetMapping("/arrow")
 	public void arrow() {
-		 //Lamda식(JS Arrow Function)
+		//Lamda식(JS Arrow Function)
 		TestInterface t = (m)->System.out.println(m);
 		t.info("test");
 		
-		TestInterface
+		TestInterface t2 = new TestInterface() {
+			@Override
+			public void info(String message) {
+				System.out.println(message);
+			}
+		};
+		t2.info("test");
 	}
 
 	@GetMapping("/admin")

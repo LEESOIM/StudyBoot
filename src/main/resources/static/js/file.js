@@ -10,12 +10,13 @@ $("#fileAdd").click(function(){
         }
         count=size;
         flag=false;
+        
     }
 
     if(count<5) {
         let add='<div id="file'+count+'">';
         add=add+'<input type="file" name="files">';
-;       add=add+'<button type="button" class="del">X</button>';
+	    add=add+'<button type="button" class="del">X</button>';
         add=add+'</div>';
         $("#fileBox").append(add);
         count++;
